@@ -79,9 +79,10 @@
   /**
    * @desc Create an InView instance.
    *
+   * @class
    * @func InView
    * @param {HTMLElement} element - element to detect when scrolled to view
-   * @param {function} callback - callback function fired on scroll event
+   * @param {scrollCallback} scrollCallback - callback function fired on scroll event
    * @return {HTMLElement} - element
    *
    * @example
@@ -127,6 +128,17 @@
     check();
     addEvent(window, 'scroll', throttledCheck);
   }
+
+  /**
+   * @desc InView callback
+   *
+   * @callback scrollCallback
+   * @param {boolean} isInView - is in view
+   * @param {object} data - scroll data
+   * @param {number} data.windowScrollTop - scrolled amount
+   * @param {number} data.elementOffsetTop - element top offset
+   * @param {number} data.inViewHeight - height of visible area
+   */
 
   this.InView = InView;
 
