@@ -461,7 +461,9 @@ exports.publish = function ( taffyData, opts, tutorials ) {
         shortened : null
       };
 
-      sourceFilePaths.push( sourcePath );
+      if (sourceFilePaths.indexOf(sourcePath) === -1) {
+       sourceFilePaths.push( sourcePath );
+      }
 
     }
   } );

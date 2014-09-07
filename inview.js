@@ -79,6 +79,7 @@
   /**
    * @desc Create an InView instance.
    *
+   * @fileoverview asdfasdf
    * @class
    * @func InView
    * @param {HTMLElement} element - element to detect when scrolled to view

@@ -10,10 +10,8 @@
   "templates": {
     "cleverLinks": false,
     "monospaceLinks": false,
-    "default": {
-      "outputSourceFiles": true,
-      "outputSourcePath": true
-    },
+    "outputSourceFiles": true,
+    "outputSourcePath": false,
     "systemName"      : "InView",
     "footer"          : "",
     "copyright"       : "Copyright © 2014 <a href='http://moogs.io' target='_blank'>Moogs, LLC.</a>",
@@ -21,6 +19,7 @@
     "theme"           : "oblivion",
     "linenums"        : true,
     "collapseSymbols" : false,
-    "inverseNav"      : true
+    "inverseNav"      : true,
+    "highlightTutorialCode" : true
   }
 }

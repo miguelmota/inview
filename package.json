@@ -9,7 +9,9 @@
     "jsdoc-oblivion": "^0.0.3",
     "grunt-jsdoc": "^0.5.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-execute": "^0.2.2"
+  },
   "scripts": {
     "test": "npm test"
   },

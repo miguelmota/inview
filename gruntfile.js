@@ -9,13 +9,19 @@ module.exports = function (grunt) {
         ],
         jsdoc: './node_modules/.bin/jsdoc',
         options: {
-          destination: 'docs',
+          destination: './docs',
           configure: './config/conf.json',
           template: './node_modules/jsdoc-oblivion/template'
         }
+      }
+    },
+    execute: {
+      target: {
+        src: ['clean.js']
       }
     }
   });
   grunt.registerTask('default', ['grunt-jsdoc']);
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-execute');
 };
