@@ -11,7 +11,8 @@
     "cleverLinks": false,
     "monospaceLinks": false,
     "default": {
-      "outputSourceFiles": true
+      "outputSourceFiles": true,
+      "outputSourcePath": true
     },
     "systemName"      : "InView",
     "footer"          : "",
