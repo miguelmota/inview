@@ -1,0 +1,14 @@
+{
+  "name": "inview",
+  "main": "inview.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/miguelmota/inview",
+  "authors": [
+    "Miguel Mota <miguelmota2@gmail.com>"
+  ],
+  "description": "Detect when element scrolled to view",
+  "keywords": [
+    "inview"
+  ],
+  "license": "MIT"
+}

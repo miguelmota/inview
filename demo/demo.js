@@ -1,12 +1,29 @@
 (function() {
 
   var el = document.querySelector('.item');
+  var status  = document.querySelector('.status');
 
-  var inView = new InView(el, function(isInView) {
+  function text(el, content) {
+    el.innerText = content;
+  }
+
+  function html(el, content) {
+    el.innerHTML = content;
+  }
+
+  function statusHtml(content) {
+    html(status, content);
+  }
+
+  var inView = InView(el, function(isInView, data) {
     if (isInView) {
-      console.log('in view');
+      statusHtml('status: <span class="success">in view</span>');
     } else {
-      console.log('not in view');
+      if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
+        statusHtml('status: <span class="fail">not in view</span> (scroll up)');
+      } else {
+        statusHtml('status: <span class="fail">not in view</span> (scroll down)');
+      }
     }
   });
 

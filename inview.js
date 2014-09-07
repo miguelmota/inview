@@ -1,5 +1,28 @@
 (function() {
 
+  function throttle(fn, threshhold, scope) {
+    threshhold || (threshhold = 100);
+    var last,
+        deferTimer;
+
+    return function () {
+      var context = scope || this;
+
+      var now = +(new Date),
+          args = arguments;
+      if (last && now < last + threshhold) {
+        clearTimeout(deferTimer);
+        deferTimer = setTimeout(function () {
+          last = now;
+          fn.apply(context, args);
+        }, threshhold);
+      } else {
+        last = now;
+        fn.apply(context, args);
+      }
+    };
+  }
+
   function hasClass(el, name) {
       return new RegExp(' ' + name + ' ').test(' ' + el.className + ' ');
   }
@@ -53,22 +76,56 @@
       }
   }
 
+  /**
+   * @desc Create an InView instance.
+   *
+   * @func InView
+   * @param {HTMLElement} element - element to detect when scrolled to view
+   * @param {function} callback - callback function fired on scroll event
+   * @return {HTMLElement} - element
+   *
+   * @example
+   * var el = document.querySelector('.item');
+   *
+   * var inView = InView(el, function(isInView, data) {
+   *   if (isInView) {
+   *     console.log('in view');
+   *   } else {
+   *     if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
+   *       console.log('not in view (scroll up)');
+   *     } else {
+   *       console.log('not in view (scroll down)');
+   *     }
+   *   }
+   * });
+   */
   function InView (el, callback) {
     var _this = this;
+    if (!(_this instanceof InView)) {
+      return new InView(el, callback);
+    }
     _this.el = el;
     _this.callback = callback;
 
     function check(e) {
+        var params = {
+          windowScrollTop: getScrollTop(),
+          elementOffsetTop: _this.el.offsetTop,
+          inViewHeight: window.outerHeight
+        };
         if (isInView(_this.el)) {
             addClass(_this.el, 'inview');
-            _this.callback(true);
+            _this.callback.call(_this.el, true, params);
         } else {
             removeClass(_this.el, 'inview');
-            _this.callback(false);
+            _this.callback.call(_this.el, false, params);
         }
     }
 
-    addEvent(window, 'scroll', check);
+    var throttledCheck = throttle(check, 100);
+
+    check();
+    addEvent(window, 'scroll', throttledCheck);
   }
 
   this.InView = InView;

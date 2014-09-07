@@ -1,8 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .item {
-    border: 1px solid red;
+    border: 1px solid #ff0000;
     padding: 20px;
+    font-family: monospace;
+    font-size: 12px;
 }
 
 .item.inview {
-    border: 1px solid blue;
+    border: 1px solid #00ff00
+}
+
+.space-filler {
+  height: 1000px;
+}
+
+.status {
+  position: fixed;
+  background: #eee;
+  color: #000;
+  font: monospace;
+  font-size: 14px;
+  padding: 5px;
+  width: 100%;
+}
+
+.success {
+  color: #00ff00;
+}
+
+.fail {
+  color: #ff0000;
 }

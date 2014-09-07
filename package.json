@@ -1,0 +1,29 @@
+{
+  "name": "inview",
+  "version": "0.0.1",
+  "description": "Detect when element scrolled to view ",
+  "main": "inview.js",
+  "dependencies": {
+    "jsdoc": "^3.3.0-alpha9",
+    "grunt": "^0.4.5",
+    "jsdoc-oblivion": "^0.0.3",
+    "grunt-jsdoc": "^0.5.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelmota/inview.git"
+  },
+  "keywords": [
+    "inview"
+  ],
+  "author": "Miguel Mota <hello@miguelmota.com> (http://www.miguelmota.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miguelmota/inview/issues"
+  },
+  "homepage": "https://github.com/miguelmota/inview"
+}
