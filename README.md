@@ -4,7 +4,7 @@ Detect when element scrolled to view
 
 # Demo
 
-**[http://inview.moogs.io/demo](http://inview.moogs.io/demo)**
+[http://lab.moogs.io/inview/demo/](http://lab.moogs.io/inview/demo/)
 
 # Documentation
 
