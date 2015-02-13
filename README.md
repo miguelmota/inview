@@ -1,4 +1,4 @@
-# InView
+# inView
 
 Detect when element scrolled to view
 
