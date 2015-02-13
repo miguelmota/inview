@@ -8,7 +8,6 @@ Detect when element scrolled to view
 
 # Documentation
 
-**[http://inview.moogs.io](http://inview.moogs.io)**
 
 # Install
 
@@ -24,9 +23,33 @@ Available via [npm](https://www.npmjs.org/package/inview)
 npm install inview
 ```
 
-# Source
+# Usage
 
-[https://github.com/miguelmota/inview](https://github.com/miguelmota/inview)
+```javascript
+var inView = inView(el, function(isInView, data) {
+  if (isInView) {
+    console.log('in view');
+  } else {
+    if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
+      console.log('not in view (scroll up)');
+    } else {
+      console.log('not in view (scroll down)');
+    }
+  }
+});
+```
+
+Scroll callback parameters:
+
+```
+{boolean} isInView - is in view
+{object} data - scroll data
+{number} data.windowScrollTop - scrolled amount
+{number} data.elementOffsetTop - element top offset
+{number} data.inViewHeight - height of visible area
+```
+
+[http://lab.moogs.io/inview/docs](http://lab.moogs.io/inview/docs)
 
 # License
 

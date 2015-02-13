@@ -1,4 +1,4 @@
-(function() {
+(function(root) {
 
   function throttle(fn, threshhold, scope) {
     threshhold || (threshhold = 100);
@@ -8,7 +8,7 @@
     return function () {
       var context = scope || this;
 
-      var now = +(new Date),
+      var now = +(new Date()),
           args = arguments;
       if (last && now < last + threshhold) {
         clearTimeout(deferTimer);
@@ -54,8 +54,8 @@
   }
 
   function getScrollTop() {
-      if (typeof pageYOffset != 'undefined') {
-          return pageYOffset;
+      if (typeof window.pageYOffset !== 'undefined') {
+          return window.pageYOffset;
       } else {
           var b = document.body;
           var d = document.documentElement;
@@ -79,7 +79,6 @@
   /**
    * @desc Create an InView instance.
    *
-   * @fileoverview asdfasdf
    * @class
    * @func InView
    * @param {HTMLElement} element - element to detect when scrolled to view
@@ -89,7 +88,7 @@
    * @example
    * var el = document.querySelector('.item');
    *
-   * var inView = InView(el, function(isInView, data) {
+   * var inView = inView(el, function(isInView, data) {
    *   if (isInView) {
    *     console.log('in view');
    *   } else {
@@ -131,7 +130,7 @@
   }
 
   /**
-   * @desc InView callback
+   * @desc inView callback
    *
    * @callback scrollCallback
    * @param {boolean} isInView - is in view
@@ -141,6 +140,17 @@
    * @param {number} data.inViewHeight - height of visible area
    */
 
-  this.InView = InView;
+   if (typeof exports !== 'undefined') {
+      if (typeof module !== 'undefined' && module.exports) {
+        exports = module.exports = inView;
+      }
+      exports.inView = InView;
+    } else if (typeof define === 'function' && define.amd) {
+      define([], function() {
+        return inView;
+      });
+    } else {
+      root.inView = inView;
+    }
 
-}).call(this);
+})(this);

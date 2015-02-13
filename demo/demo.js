@@ -15,7 +15,7 @@
     html(status, content);
   }
 
-  var inView = InView(el, function(isInView, data) {
+  var inView = inView(el, function(isInView, data) {
     if (isInView) {
       statusHtml('status: <span class="success">in view</span>');
     } else {
