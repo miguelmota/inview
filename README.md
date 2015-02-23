@@ -6,9 +6,6 @@ Detect when element scrolled to view
 
 [http://lab.moogs.io/inview/demo/](http://lab.moogs.io/inview/demo/)
 
-# Documentation
-
-
 # Install
 
 Available via [bower](http://bower.io/)
