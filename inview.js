@@ -144,7 +144,7 @@
       if (typeof module !== 'undefined' && module.exports) {
         exports = module.exports = inView;
       }
-      exports.inView = InView;
+      exports.inView = inView;
     } else if (typeof define === 'function' && define.amd) {
       define([], function() {
         return inView;
