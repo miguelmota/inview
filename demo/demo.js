@@ -18,9 +18,9 @@
   var inView = InView(el, function(isInView, data) {
     if (isInView) {
       if (data.elementOffsetTopInViewHeight < data.inViewHeight/2) {
-        statusHtml('status: <span class="success">in view (top half)</span>');
+        statusHtml('status: <span class="success">in view</span> (top half)');
       } else {
-        statusHtml('status: <span class="success">in view (bottom half)</span>');
+        statusHtml('status: <span class="success">in view</span> (bottom half)');
       }
     } else {
       if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
