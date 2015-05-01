@@ -1,6 +1,6 @@
 {
   "name": "inview",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Detect when element scrolled to view ",
   "main": "inview.js",
   "dependencies": {
