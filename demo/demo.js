@@ -16,6 +16,7 @@
   }
 
   var inView = InView(el, function(isInView, data) {
+    el.textContent = data.elementOffsetTopInViewHeight;
     if (isInView) {
       if (data.elementOffsetTopInViewHeight < data.inViewHeight/2) {
         statusHtml('status: <span class="success">in view</span> (top half)');
