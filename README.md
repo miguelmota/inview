@@ -48,6 +48,7 @@ Scroll callback parameters:
 {number} data.windowScrollTop - scrolled amount
 {number} data.elementOffsetTop - element top offset
 {number} data.inViewHeight - height of visible area
+{number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
 ```
 
 [http://lab.moogs.io/inview/docs](http://lab.moogs.io/inview/docs)
