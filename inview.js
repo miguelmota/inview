@@ -88,7 +88,7 @@
    * @example
    * var el = document.querySelector('.item');
    *
-   * var inView = inView(el, function(isInView, data) {
+   * var InView = InView(el, function(isInView, data) {
    *   if (isInView) {
    *     console.log('in view');
    *   } else {
@@ -112,7 +112,8 @@
         var params = {
           windowScrollTop: getScrollTop(),
           elementOffsetTop: _this.el.offsetTop,
-          inViewHeight: window.outerHeight
+          inViewHeight: window.outerHeight,
+          elementOffsetTopInViewHeight: window.outerHeight - (getScrollTop() - (_this.el.offsetTop - window.outerHeight))
         };
         if (isInView(_this.el)) {
             addClass(_this.el, 'inview');
@@ -130,7 +131,7 @@
   }
 
   /**
-   * @desc inView callback
+   * @desc InView callback
    *
    * @callback scrollCallback
    * @param {boolean} isInView - is in view
@@ -138,19 +139,20 @@
    * @param {number} data.windowScrollTop - scrolled amount
    * @param {number} data.elementOffsetTop - element top offset
    * @param {number} data.inViewHeight - height of visible area
+   * @param {number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
    */
 
    if (typeof exports !== 'undefined') {
       if (typeof module !== 'undefined' && module.exports) {
-        exports = module.exports = inView;
+        exports = module.exports = InView;
       }
-      exports.inView = inView;
+      exports.InView = InView;
     } else if (typeof define === 'function' && define.amd) {
       define([], function() {
-        return inView;
+        return InView;
       });
     } else {
-      root.inView = inView;
+      root.InView = InView;
     }
 
 })(this);

@@ -13,3 +13,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.0.3] - 2015-02-22
 ### Changed
 - Fixed exports typo
+
+## [0.0.3] - 2015-02-15
+### Changed
+- Reverted `inview` global to `InView`
+- Added `data.elementOffsetTopInViewHeight`

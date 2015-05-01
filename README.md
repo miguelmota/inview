@@ -23,9 +23,13 @@ npm install inview
 # Usage
 
 ```javascript
-var inView = inView(el, function(isInView, data) {
+var inView = InView(el, function(isInView, data) {
   if (isInView) {
-    console.log('in view');
+    if (data.elementOffsetTopInViewHeight < data.inViewHeight/2) {
+      console.log('in view (top half)');
+    } else {
+      console.log('in view (bottom half)');
+    }
   } else {
     if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
       console.log('not in view (scroll up)');
