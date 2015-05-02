@@ -71,7 +71,7 @@
           objBottom = objTop + obj.offsetHeight,
           offset = 0;
 
-      if ((objBottom <= winBottom + offset) && (objTop >= winTop)) {
+      if ((objTop <= winBottom + offset) && (objBottom >= winTop)) {
           return true;
       }
   }

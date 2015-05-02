@@ -14,7 +14,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Fixed exports typo
 
-## [0.0.3] - 2015-02-15
+## [0.0.4] - 2015-05-01
 ### Changed
 - Reverted `inview` global to `InView`
 - Added `data.elementOffsetTopInViewHeight`
+
+## [0.0.5] - 2015-05-01
+### Changed
+- Fixed inverted height values
