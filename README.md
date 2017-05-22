@@ -4,7 +4,7 @@ Detect when element scrolled to view
 
 # Demo
 
-[http://lab.moogs.io/inview/demo/](http://lab.moogs.io/inview/demo/)
+[https://lab.miguelmota.com/inview/demo/](https://lab.miguelmota.com/inview/demo/)
 
 # Install
 
@@ -51,7 +51,7 @@ Scroll callback parameters:
 {number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
 ```
 
-[http://lab.moogs.io/inview/docs](http://lab.moogs.io/inview/docs)
+[https://lab.miguelmota.com/inview/docs](https://lab.miguelmota.com/inview/docs)
 
 # License
 
