@@ -22,8 +22,21 @@ npm install inview
 
 # Usage
 
+Basic example
+
 ```javascript
-var inView = InView(el, function(isInView, data) {
+var inview = InView(el, function(isInView) {
+  if (isInView) {
+    // do something
+    // ...
+  }
+});
+```
+
+Example showing if visible top half or bottom half of screen
+
+```javascript
+var inview = InView(el, function(isInView, data) {
   if (isInView) {
     if (data.elementOffsetTopInViewHeight < data.inViewHeight/2) {
       console.log('in view (top half)');
@@ -38,6 +51,22 @@ var inView = InView(el, function(isInView, data) {
     }
   }
 });
+```
+
+Destroy InView listeners
+
+```javascript
+var inview = InView(el, function(isInView, data) {
+  if (isInView) {
+    // do something
+    // ...
+
+    this.destroy();
+  }
+})
+
+// another way
+inview.destroy();
 ```
 
 Scroll callback parameters:

@@ -45,6 +45,14 @@
       return el;
   }
 
+  function removeEvent(el, name, fn) {
+      if (el.removeEventListener) {
+          return el.removeEventListener(name, fn);
+      } else if (el.detachEvent) {
+          return el.detachEvent('on' + name, fn);
+      }
+  }
+
   function addEvent(el, name, fn) {
       if (el.addEventListener) {
           return el.addEventListener(name, fn, false);
@@ -67,13 +75,15 @@
   function isInView(obj) {
       var winTop = getScrollTop(),
           winBottom = winTop + window.innerHeight,
-          objTop = obj.offsetTop,
+          objTop = obj.getBoundingClientRect().top + window.scrollY,
           objBottom = objTop + obj.offsetHeight,
           offset = 0;
 
       if ((objTop <= winBottom + offset) && (objBottom >= winTop)) {
           return true;
       }
+
+      return false;
   }
 
   /**
@@ -105,10 +115,20 @@
     if (!(_this instanceof InView)) {
       return new InView(el, callback);
     }
-    _this.el = el;
-    _this.callback = callback;
 
-    function check(e) {
+    _this.el = el;
+    _this.callback = callback.bind(_this);
+    _this.destroy = function() {};
+
+    if (!el) {
+      return _this;
+    }
+
+    var isDestroyed = false;
+
+    var check = function check(e) {
+        if (isDestroyed) return false;
+
         var params = {
           windowScrollTop: getScrollTop(),
           elementOffsetTop: _this.el.offsetTop,
@@ -117,17 +137,25 @@
         };
         if (isInView(_this.el)) {
             addClass(_this.el, 'inview');
-            _this.callback.call(_this.el, true, params);
+            _this.callback.call(_this, true, params);
         } else {
             removeClass(_this.el, 'inview');
-            _this.callback.call(_this.el, false, params);
+            _this.callback.call(_this, false, params);
         }
     }
 
     var throttledCheck = throttle(check, 100);
 
-    check();
     addEvent(window, 'scroll', throttledCheck);
+
+    _this.destroy = function() {
+      isDestroyed = true;
+      removeEvent(window, 'scroll', throttledCheck)
+    };
+
+    throttledCheck();
+
+    return _this;
   }
 
   /**
@@ -142,6 +170,8 @@
    * @param {number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
    */
 
+  root.InView = InView;
+
    if (typeof exports !== 'undefined') {
       if (typeof module !== 'undefined' && module.exports) {
         exports = module.exports = InView;
@@ -151,8 +181,6 @@
       define([], function() {
         return InView;
       });
-    } else {
-      root.InView = InView;
     }
 
 })(this);
