@@ -170,17 +170,13 @@
    * @param {number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
    */
 
-  root.InView = InView;
-
-   if (typeof exports !== 'undefined') {
-      if (typeof module !== 'undefined' && module.exports) {
-        exports = module.exports = InView;
-      }
-      exports.InView = InView;
-    } else if (typeof define === 'function' && define.amd) {
-      define([], function() {
-        return InView;
-      });
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = InView;
     }
+    exports.InView = InView;
+  } else {
+    root.InView = InView;
+  }
 
-})(this);
+})(window);
