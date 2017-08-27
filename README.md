@@ -8,12 +8,6 @@ Detect when element scrolled to view
 
 # Install
 
-Available via [bower](http://bower.io/)
-
-```bash
-bower install inview
-```
-
 Available via [npm](https://www.npmjs.org/package/inview)
 
 ```bash
