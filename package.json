@@ -3,8 +3,6 @@
   "version": "0.0.9",
   "description": "Detect when element scrolled to view ",
   "main": "inview.js",
-  "dependencies": {
-  },
   "devDependencies": {
     "grunt-execute": "^0.2.2",
     "grunt-jsdoc": "^0.5.7",
