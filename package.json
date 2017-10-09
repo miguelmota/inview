@@ -4,13 +4,13 @@
   "description": "Detect when element scrolled to view ",
   "main": "inview.js",
   "dependencies": {
-    "jsdoc": "^3.3.0-alpha9",
-    "grunt": "^0.4.5",
-    "jsdoc-oblivion": "^0.0.3",
-    "grunt-jsdoc": "^0.5.7"
   },
   "devDependencies": {
-    "grunt-execute": "^0.2.2"
+    "grunt-execute": "^0.2.2",
+    "grunt-jsdoc": "^0.5.7",
+    "grunt": "^0.4.5",
+    "jsdoc-oblivion": "^0.0.3",
+    "jsdoc": "^3.3.0-alpha9"
   },
   "scripts": {
     "test": "npm test"
