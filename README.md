@@ -78,4 +78,4 @@ Scroll callback parameters:
 
 # License
 
-Released under the MIT License.
+MIT
