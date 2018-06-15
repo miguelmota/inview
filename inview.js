@@ -132,8 +132,8 @@
         var params = {
           windowScrollTop: getScrollTop(),
           elementOffsetTop: _this.el.offsetTop,
-          inViewHeight: window.outerHeight,
-          elementOffsetTopInViewHeight: window.outerHeight - (getScrollTop() - (_this.el.offsetTop - window.outerHeight))
+          inViewHeight: window.innerHeight,
+          elementOffsetTopInViewHeight: window.innerHeight - (getScrollTop() - (_this.el.offsetTop - window.innerHeight))
         };
         if (isInView(_this.el)) {
             addClass(_this.el, 'inview');
