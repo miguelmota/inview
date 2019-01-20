@@ -1,4 +1,4 @@
-(function(root) {
+;(function(root) {
 
   function throttle(fn, threshhold, scope) {
     threshhold || (threshhold = 100);
