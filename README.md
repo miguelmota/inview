@@ -1,20 +1,28 @@
+<h3 align="center">
+  <br />
+  <img src="https://user-images.githubusercontent.com/168240/51433713-957e3000-1c05-11e9-975c-d3d1d17b6760.png" alt="logo" width="600" />
+  <br />
+  <br />
+  <br />
+</h3>
+
 # inView
 
-Detect when element scrolled to view
+> Detect when element scrolled to view
 
-# Demo
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/miguelmota/inview/master/LICENSE) [![Build Status](https://travis-ci.org/miguelmota/inview.svg?branch=master)](https://travis-ci.org/miguelmota/inview) [![dependencies Status](https://david-dm.org/miguelmota/inview/status.svg)](https://david-dm.org/miguelmota/inview) [![NPM version](https://badge.fury.io/js/inview.svg)](http://badge.fury.io/js/inview)
+
+## Demo
 
 [https://lab.miguelmota.com/inview/demo/](https://lab.miguelmota.com/inview/demo/)
 
-# Install
-
-Available via [npm](https://www.npmjs.org/package/inview)
+## Install
 
 ```bash
 npm install inview
 ```
 
-# Usage
+## Getting started
 
 Basic example
 
@@ -76,6 +84,6 @@ Scroll callback parameters:
 
 [https://lab.miguelmota.com/inview/docs](https://lab.miguelmota.com/inview/docs)
 
-# License
+## License
 
 MIT

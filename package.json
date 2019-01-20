@@ -1,14 +1,14 @@
 {
   "name": "inview",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Detect when element scrolled to view ",
   "main": "inview.js",
   "devDependencies": {
+    "grunt": "^1.0.3",
     "grunt-execute": "^0.2.2",
-    "grunt-jsdoc": "^0.5.7",
-    "grunt": "^0.4.5",
-    "jsdoc-oblivion": "^0.0.3",
-    "jsdoc": "^3.3.0-alpha9"
+    "grunt-jsdoc": "^2.3.0",
+    "jsdoc": "^3.3.0-alpha9",
+    "jsdoc-oblivion": "^0.0.3"
   },
   "scripts": {
     "test": "echo 'TODO'"
