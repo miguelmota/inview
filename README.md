@@ -86,4 +86,4 @@ Scroll callback parameters:
 
 ## License
 
-MIT
+[MIT](LICENSE)
