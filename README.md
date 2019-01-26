@@ -81,12 +81,12 @@ Constructor:
 
 Scroll callback parameters:
 
-- *{boolean} isInView - is in view*
-- *{object} data - scroll data*
-- *{number} data.windowScrollTop - scrolled amount*
-- *{number} data.elementOffsetTop - element top offset*
-- *{number} data.inViewHeight - height of visible area*
-- *{number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area*
+- *{boolean} isInView* - is in view
+- *{object} data* - scroll data
+- *{number} data.windowScrollTop* - scrolled amount
+- *{number} data.elementOffsetTop* - element top offset
+- *{number} data.inViewHeight* - height of visible area
+- *{number} data.elementOffsetTopInViewHeight* - element top offset relative to height of visible area
 
 Visualization:
 
