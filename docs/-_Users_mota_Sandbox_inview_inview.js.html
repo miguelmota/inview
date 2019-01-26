@@ -55,82 +55,96 @@
 <section>
   <article>
     <pre
-      class="sunlight-highlight-javascript linenums">(function(root) {
-
-  function throttle(fn, threshhold, scope) {
-    threshhold || (threshhold = 100);
+      class="sunlight-highlight-javascript linenums">;(function (root) {
+  function throttle (fn, threshhold, scope) {
+    threshhold || (threshhold = 100)
     var last,
-        deferTimer;
+      deferTimer
 
     return function () {
-      var context = scope || this;
+      var context = scope || this
 
-      var now = +(new Date()),
-          args = arguments;
+      var now = +(new Date())
+
+      var args = arguments
       if (last &amp;&amp; now &lt; last + threshhold) {
-        clearTimeout(deferTimer);
+        clearTimeout(deferTimer)
         deferTimer = setTimeout(function () {
-          last = now;
-          fn.apply(context, args);
-        }, threshhold);
+          last = now
+          fn.apply(context, args)
+        }, threshhold)
       } else {
-        last = now;
-        fn.apply(context, args);
+        last = now
+        fn.apply(context, args)
       }
-    };
+    }
   }
 
-  function hasClass(el, name) {
-      return new RegExp(' ' + name + ' ').test(' ' + el.className + ' ');
+  function hasClass (el, name) {
+    return new RegExp(' ' + name + ' ').test(' ' + el.className + ' ')
   }
 
-  function addClass(el, name) {
-      if (!hasClass(el, name)) {
-          el.className += ' ' + name;
-      }
-      return el;
+  function addClass (el, name) {
+    if (!hasClass(el, name)) {
+      el.className += ' ' + name
+    }
+    return el
   }
 
-  function removeClass(el, name) {
-      var newClass = ' ' + el.className.replace(/[\t\r\n]/g, ' ') + ' ';
-      if (hasClass(el, name)) {
-          while (newClass.indexOf(' ' + name + ' ') >= 0) {
-              newClass = newClass.replace(' ' + name + ' ', ' ');
-          }
-          el.className = newClass.replace(/^\s+|\s+$/g, '');
+  function removeClass (el, name) {
+    var newClass = ' ' + el.className.replace(/[\t\r\n]/g, ' ') + ' '
+    if (hasClass(el, name)) {
+      while (newClass.indexOf(' ' + name + ' ') >= 0) {
+        newClass = newClass.replace(' ' + name + ' ', ' ')
       }
-      return el;
+      el.className = newClass.replace(/^\s+|\s+$/g, '')
+    }
+    return el
   }
 
-  function addEvent(el, name, fn) {
-      if (el.addEventListener) {
-          return el.addEventListener(name, fn, false);
-      } else if (el.attachEvent) {
-          return el.attachEvent('on' + name, fn);
-      }
+  function removeEvent (el, name, fn) {
+    if (el.removeEventListener) {
+      return el.removeEventListener(name, fn)
+    } else if (el.detachEvent) {
+      return el.detachEvent('on' + name, fn)
+    }
   }
 
-  function getScrollTop() {
-      if (typeof window.pageYOffset !== 'undefined') {
-          return window.pageYOffset;
-      } else {
-          var b = document.body;
-          var d = document.documentElement;
-          d = d.clientHeight ? d : b;
-          return d.scrollTop;
-      }
+  function addEvent (el, name, fn) {
+    if (el.addEventListener) {
+      return el.addEventListener(name, fn, false)
+    } else if (el.attachEvent) {
+      return el.attachEvent('on' + name, fn)
+    }
   }
 
-  function isInView(obj) {
-      var winTop = getScrollTop(),
-          winBottom = winTop + window.innerHeight,
-          objTop = obj.offsetTop,
-          objBottom = objTop + obj.offsetHeight,
-          offset = 0;
+  function getScrollTop () {
+    if (typeof window.pageYOffset !== 'undefined') {
+      return window.pageYOffset
+    } else {
+      var b = document.body
+      var d = document.documentElement
+      d = d.clientHeight ? d : b
+      return d.scrollTop
+    }
+  }
 
-      if ((objTop &lt;= winBottom + offset) &amp;&amp; (objBottom >= winTop)) {
-          return true;
-      }
+  function isInView (obj) {
+    var winTop = getScrollTop()
+
+    var winBottom = winTop + window.innerHeight
+
+    var objTop = obj.getBoundingClientRect().top + window.scrollY
+
+    var objBottom = objTop + obj.offsetHeight
+
+    var offset = 0
+
+    if ((objTop &lt;= winBottom + offset) &amp;&amp; (objBottom >= winTop)) {
+      return true
+    }
+
+    return false
   }
 
   /**
@@ -158,33 +172,51 @@
    * });
    */
   function InView (el, callback) {
-    var _this = this;
+    var _this = this
     if (!(_this instanceof InView)) {
-      return new InView(el, callback);
-    }
-    _this.el = el;
-    _this.callback = callback;
-
-    function check(e) {
-        var params = {
-          windowScrollTop: getScrollTop(),
-          elementOffsetTop: _this.el.offsetTop,
-          inViewHeight: window.outerHeight,
-          elementOffsetTopInViewHeight: window.outerHeight - (getScrollTop() - (_this.el.offsetTop - window.outerHeight))
-        };
-        if (isInView(_this.el)) {
-            addClass(_this.el, 'inview');
-            _this.callback.call(_this.el, true, params);
-        } else {
-            removeClass(_this.el, 'inview');
-            _this.callback.call(_this.el, false, params);
-        }
+      return new InView(el, callback)
     }
 
-    var throttledCheck = throttle(check, 100);
+    _this.el = el
+    _this.callback = callback.bind(_this)
+    _this.destroy = function () {}
 
-    check();
-    addEvent(window, 'scroll', throttledCheck);
+    if (!el) {
+      return _this
+    }
+
+    var isDestroyed = false
+
+    var check = function check (e) {
+      if (isDestroyed) return false
+
+      var params = {
+        windowScrollTop: getScrollTop(),
+        elementOffsetTop: _this.el.offsetTop,
+        inViewHeight: window.innerHeight,
+        elementOffsetTopInViewHeight: window.innerHeight - (getScrollTop() - (_this.el.offsetTop - window.innerHeight))
+      }
+      if (isInView(_this.el)) {
+        addClass(_this.el, 'inview')
+        _this.callback.call(_this, true, params)
+      } else {
+        removeClass(_this.el, 'inview')
+        _this.callback.call(_this, false, params)
+      }
+    }
+
+    var throttledCheck = throttle(check, 100)
+
+    addEvent(window, 'scroll', throttledCheck)
+
+    _this.destroy = function () {
+      isDestroyed = true
+      removeEvent(window, 'scroll', throttledCheck)
+    }
+
+    throttledCheck()
+
+    return _this
   }
 
   /**
@@ -199,20 +231,15 @@
    * @param {number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
    */
 
-   if (typeof exports !== 'undefined') {
-      if (typeof module !== 'undefined' &amp;&amp; module.exports) {
-        exports = module.exports = InView;
-      }
-      exports.InView = InView;
-    } else if (typeof define === 'function' &amp;&amp; define.amd) {
-      define([], function() {
-        return InView;
-      });
-    } else {
-      root.InView = InView;
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' &amp;&amp; module.exports) {
+      exports = module.exports = InView
     }
-
-})(this);
+    exports.InView = InView
+  } else {
+    root.InView = InView
+  }
+})(window);
 </pre>
   </article>
 </section>
@@ -233,8 +260,8 @@
           <br />
           
     <span class="jsdoc-message">
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc" target="_blank">JSDoc 3.4.3</a>
-    on 2017-05-21T21:05:11-07:00
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc" target="_blank">JSDoc 3.5.5</a>
+    on 2019-01-26T02:46:43-08:00
     </span>
         </footer>
       </div>

@@ -41,18 +41,18 @@ Example showing if visible top half or bottom half of screen
 var inview = InView(el, function(isInView, data) {
   if (isInView) {
     if (data.elementOffsetTopInViewHeight < data.inViewHeight/2) {
-      console.log('in view (top half)');
+      console.log('in view (top half)')
     } else {
-      console.log('in view (bottom half)');
+      console.log('in view (bottom half)')
     }
   } else {
     if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
-      console.log('not in view (scroll up)');
+      console.log('not in view (scroll up)')
     } else {
-      console.log('not in view (scroll down)');
+      console.log('not in view (scroll down)')
     }
   }
-});
+})
 ```
 
 Destroy InView listeners
@@ -63,28 +63,34 @@ var inview = InView(el, function(isInView, data) {
     // do something
     // ...
 
-    this.destroy();
+    this.destroy()
   }
 })
 
 // another way
-inview.destroy();
+inview.destroy()
 ```
+
+## Documentation
+
+[https://lab.miguelmota.com/inview/docs](https://lab.miguelmota.com/inview/docs)
+
+Constructor:
+
+- *InView(element, callback)*
 
 Scroll callback parameters:
 
-```
-{boolean} isInView - is in view
-{object} data - scroll data
-{number} data.windowScrollTop - scrolled amount
-{number} data.elementOffsetTop - element top offset
-{number} data.inViewHeight - height of visible area
-{number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
-```
+- *{boolean} isInView - is in view*
+- *{object} data - scroll data*
+- *{number} data.windowScrollTop - scrolled amount*
+- *{number} data.elementOffsetTop - element top offset*
+- *{number} data.inViewHeight - height of visible area*
+- *{number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area*
+
+Visualization:
 
 <img src="https://user-images.githubusercontent.com/168240/51785980-f2507d80-2112-11e9-8c0a-cb1dadbf7f83.png" alt="diagram" width="600" />
-
-[https://lab.miguelmota.com/inview/docs](https://lab.miguelmota.com/inview/docs)
 
 ## License
 
