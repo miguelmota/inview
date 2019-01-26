@@ -28,6 +28,15 @@
   width: 100%;
 }
 
+.output {
+  position: fixed;
+  color: #000;
+  font: monospace;
+  font-size: 10px;
+  top: 60px;
+  left: 60px;
+}
+
 .success {
   color: #00ff00;
 }

@@ -82,6 +82,8 @@ Scroll callback parameters:
 {number} data.elementOffsetTopInViewHeight - element top offset relative to height of visible area
 ```
 
+<img src="https://user-images.githubusercontent.com/168240/51785980-f2507d80-2112-11e9-8c0a-cb1dadbf7f83.png" alt="diagram" width="300" />
+
 [https://lab.miguelmota.com/inview/docs](https://lab.miguelmota.com/inview/docs)
 
 ## License

@@ -1,35 +1,39 @@
-(function() {
+;(function () {
+  var el = document.querySelector('.item')
+  var status = document.querySelector('.status')
+  var output = document.querySelector('.output')
 
-  var el = document.querySelector('.item');
-  var status  = document.querySelector('.status');
-
-  function text(el, content) {
-    el.innerText = content;
+  function text (el, content) {
+    el.innerText = content
   }
 
-  function html(el, content) {
-    el.innerHTML = content;
+  function html (el, content) {
+    el.innerHTML = content
   }
 
-  function statusHtml(content) {
-    html(status, content);
+  function statusHtml (content) {
+    html(status, content)
   }
 
-  var inView = InView(el, function(isInView, data) {
-    el.textContent = data.elementOffsetTopInViewHeight;
+  function log (data) {
+    output.innerHTML = JSON.stringify(data, null, 2)
+  }
+
+  var inView = InView(el, function (isInView, data) {
+    log(data)
+    el.textContent = data.elementOffsetTopInViewHeight
     if (isInView) {
-      if (data.elementOffsetTopInViewHeight < data.inViewHeight/2) {
-        statusHtml('status: <span class="success">in view</span> (top half)');
+      if (data.elementOffsetTopInViewHeight < data.inViewHeight / 2) {
+        statusHtml('status: <span class="success">in view</span> (top half)')
       } else {
-        statusHtml('status: <span class="success">in view</span> (bottom half)');
+        statusHtml('status: <span class="success">in view</span> (bottom half)')
       }
     } else {
       if (data.windowScrollTop - (data.elementOffsetTop - data.inViewHeight) > data.inViewHeight) {
-        statusHtml('status: <span class="fail">not in view</span> (scroll up)');
+        statusHtml('status: <span class="fail">not in view</span> (scroll up)')
       } else {
-        statusHtml('status: <span class="fail">not in view</span> (scroll down)');
+        statusHtml('status: <span class="fail">not in view</span> (scroll down)')
       }
     }
-  });
-
+  })
 })();

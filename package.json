@@ -8,10 +8,12 @@
     "grunt-execute": "^0.2.2",
     "grunt-jsdoc": "^2.3.0",
     "jsdoc": "^3.3.0-alpha9",
-    "jsdoc-oblivion": "^0.0.3"
+    "jsdoc-oblivion": "^0.0.3",
+    "standard": "^12.0.1"
   },
   "scripts": {
-    "test": "echo 'TODO'"
+    "test": "echo 'TODO'",
+    "lint:fix": "standard --fix inview.js"
   },
   "repository": {
     "type": "git",
