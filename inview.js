@@ -77,7 +77,7 @@
 
     var winBottom = winTop + window.innerHeight
 
-    var objTop = obj.getBoundingClientRect().top + window.scrollY
+    var objTop = obj.getBoundingClientRect().top + document.documentElement.scrollTop
 
     var objBottom = objTop + obj.offsetHeight
 
