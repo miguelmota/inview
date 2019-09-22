@@ -73,8 +73,6 @@ inview.destroy()
 
 ## Documentation
 
-[https://lab.miguelmota.com/inview/docs](https://lab.miguelmota.com/inview/docs)
-
 Constructor:
 
 - *InView(element, callback)*

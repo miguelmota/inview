@@ -1,6 +1,6 @@
 {
   "name": "inview",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Detect when element scrolled to view ",
   "main": "inview.js",
   "devDependencies": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "echo 'TODO'",
-    "lint:fix": "standard --fix inview.js",
+    "lint": "standard --fix inview.js",
     "docs": "jsdoc -c config/conf.json -d docs/ -t node_modules/jsdoc-oblivion/template/ inview.js README.md"
   },
   "repository": {
